@@ -3,7 +3,7 @@ import React from 'react'
 import './App.css'
 import TodoList from './TodoList'
 import AddTodoForm from './AddTodoForm'
-//import { VITE_AIRTABLE_API_TOKEN, VITE_TABLE_NAME, VITE_AIRTABLE_BASE_ID} from 
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
 
 const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`
 
@@ -103,12 +103,25 @@ console.log(todoList);
     
 
   return(
-  <>
-
-   <h1>Todo List</h1>
-   <AddTodoForm onAddTodo = {addTodo}/>
-   {isLoading ? <p>Loading....</p> :  <TodoList todoList = {todoList} onRemoveTodo = {removeTodo}/>}
-  </>
+  <BrowserRouter>
+  <Routes>
+  <Route path = "/"  element =
+   {
+    <>
+    <h1>Todo List</h1>
+    <AddTodoForm onAddTodo = {addTodo}/>
+    {isLoading ? <p>Loading....</p> :  <TodoList todoList = {todoList} onRemoveTodo = {removeTodo}/>}
+   </>
+  }
+  >
+  </Route>
+  <Route path = '/new' element ={
+    <h1>New Todo List</h1>
+  }
+  >
+  </Route>
+  </Routes>
+  </BrowserRouter>
   )
 }
 
