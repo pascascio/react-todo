@@ -30,13 +30,20 @@ function App() {
       }
     
     const data = await response.json();
-    const todos = data.records.map((todo) => {
-      return {
-        title : todo.fields.title,
-        id : todo.id
-      }
-
-    });
+    let todos;
+    
+    if (data.records === "null"){
+      todos = [];
+    } else{
+      todos = data.records.map((todo) => {
+        return {
+          title : todo.fields.title,
+          id : todo.id
+        }
+  
+      });
+    }
+ 
 
     setTodoList(todos);
     setIsLoading(false);
