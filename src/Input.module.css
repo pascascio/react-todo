@@ -1,0 +1,29 @@
+.InputContainer{
+    display:flex;
+    flex-direction: row;
+    margin-bottom:30px;
+}
+
+.Input{
+    padding: 10px;
+    margin-right: 5px;
+    width:100%;
+    background-color: rgba(30, 60, 15, 0);
+    color: white;
+    border-bottom: 1px solid white;
+    border-left: none;
+    border-right: none;
+    border-top:none;
+    margin-left: 30px;
+
+}
+
+.AddButton{
+    margin-left:10px;
+    float:right;
+}
+
+.Label{
+    color:white;
+    margin-right:5px;
+}
