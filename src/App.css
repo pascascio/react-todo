@@ -40,3 +40,8 @@
 .read-the-docs {
   color: #888;
 }
+
+body{
+  background-color: rgba(28, 58, 22, 0.684);
+  font-family: 'Archivo', 'Regular';
+}

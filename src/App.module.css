@@ -1,0 +1,12 @@
+.Heading{
+    color: white;
+ 
+}
+
+.TodoList{
+    background-color: rgba(30, 60, 15, 0.378);
+    padding: 100px;
+    display:flex;
+    flex-direction: column;
+    justify-content: start;
+}

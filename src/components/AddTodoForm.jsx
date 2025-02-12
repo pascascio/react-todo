@@ -1,8 +1,8 @@
 import {useState} from 'react';
 import React from 'react';
-import InputWithLabel from './InputWithLabel';
-
-
+import InputWithLabel from '../components/InputWithLabel';
+import styles from './TodoForm.module.css';
+import PropTypes from 'prop-types';
 function AddTodoForm({onAddTodo,}){
 
 const [todoTitle, setTodoTitle] = React.useState('');
@@ -25,10 +25,14 @@ function handleAddTodo(event){
 
 
 return(
-    <form onSubmit = {handleAddTodo}>
-      <InputWithLabel  todoTitle = {todoTitle} handleTitleChange = {handleTitleChange}> Title:  </InputWithLabel>
+    <form onSubmit = {handleAddTodo} className = {styles.FormContainer} >
+      <InputWithLabel todoTitle = {todoTitle} handleTitleChange = {handleTitleChange} defaultValue = "Enter a todo here!"></InputWithLabel>
     </form>
 )
+}
+
+AddTodoForm.propTypes = {
+    onAddTodo: PropTypes.func,
 }
 
 export default AddTodoForm;

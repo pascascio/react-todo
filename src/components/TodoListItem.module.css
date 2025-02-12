@@ -1,0 +1,20 @@
+
+
+.ListItem{
+   color: white;
+   margin-bottom: 5px;
+   padding:10px;
+   list-style:none;
+   background-color: rgba(170, 221, 180, 0.386);
+   border-left: 8px solid rgb(254, 255, 254);
+   margin-right:50px;
+}
+
+.ListButton{
+ margin-left: 25px;
+ float:right;
+}
+
+.ListButton:hover{
+   background-color: rgba(222, 106, 106, 0.715);
+}
