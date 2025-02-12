@@ -10,3 +10,8 @@
     flex-direction: column;
     justify-content: start;
 }
+
+.Hstyling{
+border: 2px solid rgba(226, 237, 221, 0.308);
+width: 100%;
+}

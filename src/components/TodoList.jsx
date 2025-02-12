@@ -4,9 +4,16 @@ import styles from './TodoList.module.css';
 import PropTypes
  from 'prop-types';
 
-function TodoList({todoList, onRemoveTodo}){
+function TodoList({todoList, onRemoveTodo, handleAscSort, handleRevSort}){
 
     return(
+      <>
+      <div className = {styles.SortContainer}> 
+      <p>Sort Order:</p>
+      <button className = {styles.SortStyle} onClick = {handleAscSort}>First Added</button>
+      <button className = {styles.SortStyle} onClick = {handleRevSort}>Last Added</button>
+      </div>
+   
         <ul className = {styles.TodoList}>
             {
               todoList.map(
@@ -14,6 +21,7 @@ function TodoList({todoList, onRemoveTodo}){
               )
             }  
         </ul>
+        </>
          )
 }
 

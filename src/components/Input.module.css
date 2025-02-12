@@ -8,14 +8,15 @@
     padding: 10px;
     margin-right: 5px;
     width:100%;
-    background-color: rgba(30, 60, 15, 0);
+    background-color: rgba(170, 221, 180, 0.386);
     color: white;
-    border-bottom: 1px solid white;
-    border-left: none;
-    border-right: none;
-    border-top:none;
+    border:none;
     margin-left: 30px;
+}
 
+.Input::placeholder{
+    color:white;
+    opacity:.5;
 }
 
 .AddButton{
