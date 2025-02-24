@@ -6,13 +6,26 @@ import AddTodoForm from './Components/AddTodoForm'
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import styles from './App.module.css'
 
-const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`
-
-
+const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}?view=Grid%20view&sort[0][field]=title&sort[0][direction]=asc`
 
 function App() {
   const [todoList, setTodoList] = React.useState([ ]);
   const[isLoading, setIsLoading] = React.useState(true);
+
+  const [sortOrder, setSortOrder] = React.useState("asc");
+  
+  function handleAscSort(){
+    setSortOrder("asc");
+    fetchData();
+    console.log('this will handle ascending sort');
+  }
+
+  function handleRevSort(){
+    setSortOrder("desc");
+    fetchData();
+    console.log('this will handle reverse sort');
+  }
+
 
   async function fetchData(){
     const options = 
@@ -32,7 +45,31 @@ function App() {
     
     const data = await response.json();
     let todos;
-    
+
+    if (sortOrder === "asc"){
+      (data.records).sort(function(a,b){
+        if(a.createdTime < b.createdTime){
+          return -1;
+        }else if(a.createdTime > b.createdTime){
+          return 1;
+        } else {
+          return 0;
+        }
+      });
+    } else if(sortOrder === "desc") {
+      (data.records).sort(function(a,b){
+        if(a.createdTime < b.createdTime){
+          return 1;
+        }else if(a.createdTime > b.createdTime){
+          return -1;
+        } else {
+          return 0;
+        }
+      });
+    }
+  
+  
+
     if (data.records === "null"){
       todos = [];
     } else{
@@ -44,14 +81,13 @@ function App() {
   
       });
     }
- 
-
     setTodoList(todos);
     setIsLoading(false);
   }catch(error){
     console.log(error.status)
   }
   }
+ 
 
 
 
@@ -88,7 +124,7 @@ function App() {
 
   React.useEffect(() => {
      fetchData()
-    }, []);
+    }, [sortOrder, todoList]);
 
 
   React.useEffect(() => {
@@ -104,7 +140,7 @@ function App() {
     updateData(newTodo);
     setTodoList([...todoList, newTodo])   
   }
-console.log(todoList);
+
   function removeTodo(id){
     setTodoList(todoList.filter(item => item.id !== id));
     }
@@ -119,7 +155,8 @@ console.log(todoList);
     <div className = {styles.TodoList}>
     <h1 className = {styles.Heading}>Todo List</h1>
     <AddTodoForm onAddTodo = {addTodo}/>
-    {isLoading ? <p>Loading....</p> :  <TodoList todoList = {todoList} onRemoveTodo = {removeTodo}/>}
+    <hr className= {styles.Hstyling}></hr>
+    {isLoading ? <p>Loading....</p> :  <TodoList todoList = {todoList} onRemoveTodo = {removeTodo} handleAscSort = {handleAscSort} handleRevSort = {handleRevSort}/>}
    </div>
   }
   >
