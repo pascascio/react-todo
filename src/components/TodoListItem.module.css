@@ -10,8 +10,12 @@
    margin-right:50px;
 }
 
+
+.ListItem.checkbox{
+   margin-left:0;
+}
 .ListButton{
- margin-left: 25px;
+ margin-left: 35px;
  float:right;
 }
 

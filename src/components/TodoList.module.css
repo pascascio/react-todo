@@ -4,27 +4,9 @@
    width:100%;
 }
 
-
-.SortStyle{
-   width: 80px;
-   background-color: rgba(34, 62, 44, 0.605);
-   display: flex;
-}
-
-.SortContainer{
-   display:flex;
-   flex-direction: row;
-   gap: .3em;
-}
-
-.SortContainer button{
-   justify-content: center;
-   color: white;
-   height: fit-content;
-   width: fit-content;
-   border: 1px solid white;
-}
-
-.SortContainer button:hover{
-   background-color: rgba(97, 135, 110, 0.605);
+.Dropdown{
+   margin-bottom: 10px;
+   display:inline-block; 
+   position: relative;
+   z-index:10;
 }

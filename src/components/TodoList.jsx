@@ -4,17 +4,25 @@ import styles from './TodoList.module.css';
 import PropTypes
  from 'prop-types';
 
-function TodoList({todoList, onRemoveTodo, handleAscSort, handleRevSort}){
+function TodoList({todoList, onRemoveTodo, handleSort}){
 
+  function handleSelectChange(event){
+  const selectedValue = event.target.value;
+  handleSort(selectedValue);
+  }
     return(
-      <>
-      <div className = {styles.SortContainer}> 
-      <p>Sort Order:</p>
-      <button className = {styles.SortStyle} onClick = {handleAscSort}>First Added</button>
-      <button className = {styles.SortStyle} onClick = {handleRevSort}>Last Added</button>
-      </div>
-   
-        <ul className = {styles.TodoList}>
+<>
+<div className = {styles.Dropdown}>
+  <label>Sort By: 
+  <select  id ="sort-menu" onChange = {handleSelectChange}>
+    <option>Time Created</option>
+    <option>Title</option>
+  </select>
+  </label>
+</div>
+
+
+           <ul className = {styles.TodoList}>
             {
               todoList.map(
                 (item) => <TodoListItem todo = {item.title} key={item.id} onRemoveTodo = {onRemoveTodo} id = {String(item.id)}/>
